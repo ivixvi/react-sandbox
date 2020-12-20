@@ -13,6 +13,9 @@ export function Board(props: any) {
     const [board, setBoard] = useState(Array(9).fill(''))
     
     function squareClickHandler(position: number) {
+        // すでにクリック済みの場合は処理を行わない
+        if (board[position] !== '') return void 0;
+        
         setBoard(changeBoard(board,nextPalayer? '○': '×',position))
         setNextPlayer(!nextPalayer)
     }
